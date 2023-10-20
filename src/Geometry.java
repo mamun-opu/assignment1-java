@@ -22,6 +22,19 @@ class Triangle{
         System.out.println("distance is: ");
         System.out.println(distance(vertices[0], vertices[1]));
     }
+    public boolean is_isosceles(){
+        double side1 = distance(vertices[0], vertices[1]);
+        double side2 = distance(vertices[1], vertices[2]);
+        double side3 = distance(vertices[0], vertices[2]);
+
+        return (side1 == side2) || (side2 == side3) || (side3 == side1);
+    }
+    public double calculate_perimeter(){
+        double side1 = distance(vertices[0], vertices[1]);
+        double side2 = distance(vertices[1], vertices[2]);
+        double side3 = distance(vertices[0], vertices[2]);
+        return side1 + side2 + side3;
+    }
 }
 
 public class Geometry {
