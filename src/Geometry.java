@@ -8,7 +8,20 @@ class Point {
         this.x = x;
         this.y = y;
     }
+}
 
+class Triangle{
+    Point[] vertices;
+    public Triangle(Point[] vertices){
+        this.vertices = vertices;
+    }
+    public double distance(Point v1,Point v2){
+        return Math.sqrt(((v1.x - v2.x)*(v1.x - v2.x)) + ((v1.y - v2.y)*(v1.y - v2.y)));
+    }
+    public void display(){
+        System.out.println("distance is: ");
+        System.out.println(distance(vertices[0], vertices[1]));
+    }
 }
 
 public class Geometry {
@@ -27,5 +40,7 @@ public class Geometry {
             System.out.println(vertices[j].x);
             System.out.println(vertices[j].y);
         }
+        Triangle triangle = new Triangle(vertices);
+        triangle.display();
     }
 }
