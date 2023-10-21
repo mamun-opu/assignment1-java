@@ -31,6 +31,16 @@ class Triangle{
         double side3 = distance(vertices[0], vertices[2]);
         return side1 + side2 + side3;
     }
+    public double calculate_area(Point a, Point b, Point c){
+        return Math.abs((a.x*(b.y-c.y) + b.x*(c.y-a.y)+c.x*(a.y-b.y))/2.0);
+    }
+    public boolean is_inside(Point x){
+        double A = calculate_area(vertices[0], vertices[1], vertices[2]);
+        double A1 = calculate_area(x, vertices[1], vertices[2]);
+        double A2 = calculate_area(vertices[0], x, vertices[2]);
+        double A3 = calculate_area(vertices[0], vertices[1], x);
+        return (A == A1 + A2 + A3);
+    }
 }
 
 public class Geometry {
@@ -46,8 +56,6 @@ public class Geometry {
             System.out.print("Please enter y: ");
             double y = scanner.nextDouble();
             vertices[j] = new Point(x, y);
-            System.out.println(vertices[j].x);
-            System.out.println(vertices[j].y);
         }
         Triangle triangle = new Triangle(vertices);
 
@@ -59,5 +67,22 @@ public class Geometry {
         }else {
             System.out.println(" The triangle is not isosceles");
         }
+        System.out.println('\n');
+        System.out.println("enter 1 to check if a point is inside this triangle or press any number to dismiss");
+        int m = scanner.nextInt();
+        if (m == 1){
+            System.out.print("Please enter x: ");
+            double x = scanner.nextDouble();
+            System.out.print("Please enter y: ");
+            double y = scanner.nextDouble();
+            Point p = new Point(x, y);
+            triangle.is_inside(p);
+            if (triangle.is_inside(p)){
+                System.out.println("The point is in the Triangle");
+            }else {
+                System.out.println("The point is not in the Triangle");
+            }
+        }
+
     }
 }
