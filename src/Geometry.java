@@ -18,10 +18,7 @@ class Triangle{
     public double distance(Point v1,Point v2){
         return Math.sqrt(((v1.x - v2.x)*(v1.x - v2.x)) + ((v1.y - v2.y)*(v1.y - v2.y)));
     }
-    public void display(){
-        System.out.println("distance is: ");
-        System.out.println(distance(vertices[0], vertices[1]));
-    }
+
     public boolean is_isosceles(){
         double side1 = distance(vertices[0], vertices[1]);
         double side2 = distance(vertices[1], vertices[2]);
@@ -54,6 +51,14 @@ public class Geometry {
             System.out.println(vertices[j].y);
         }
         Triangle triangle = new Triangle(vertices);
-        triangle.display();
+
+        triangle.calculate_perimeter();
+        System.out.print("Perimeter: ");
+        System.out.print(triangle.calculate_perimeter());
+        if(triangle.is_isosceles()) {
+            System.out.print(" The triangle is isosceles");
+        }else {
+            System.out.println(" The triangle is not isosceles");
+        }
     }
 }
